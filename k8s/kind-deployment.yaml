@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-toolkit-deployment
+  namespace: devops-toolkit
+  labels:
+    app: devops-toolkit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-toolkit
+  template:
+    metadata:
+      labels:
+        app: devops-toolkit
+    spec:
+      containers:
+        - name: devops-toolkit
+          image: murugannadar/devops_toolkit-web:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
